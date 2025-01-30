@@ -38,11 +38,12 @@ export const getUserJobData = async () => {
     const querySnapshot = await getDocs(
       collection(db, "users", user.uid, "jobs")
     );
-    querySnapshot.forEach((doc) => {
-      //   console.log(`${doc.id} => ${doc.data()}`);
-      console.log(doc.data());
-    });
-    return doc;
+    const jobData = querySnapshot.docs.map((doc) => ({
+      //   id: doc.id, // Adding document ID for reference (optional)
+      ...doc.data(), // Spread the document data into the object
+    }));
+
+    return jobData;
   } catch (error) {
     console.log("error fething data..", error);
   }

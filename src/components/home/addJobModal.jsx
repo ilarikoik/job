@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+
 import { addUsersJobApplication } from "../../firebase/database";
 
-export default function AddJobToList() {
+export default function AddJobToList({ added, setAddedHandler }) {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -26,9 +27,11 @@ export default function AddJobToList() {
 
   const handleAdd = () => {
     // lisää database mihi tungetaa tää objekti
-    setTestilista((prevLista) => [...prevLista, hakemus]);
+    setTestilista((prevLista) => [hakemus, ...prevLista]);
     addUsersJobApplication(hakemus);
     closeModal();
+    setAddedHandler();
+    console.log(added);
   };
 
   useEffect(() => {
@@ -44,7 +47,7 @@ export default function AddJobToList() {
         Add Job
       </button>
       <button
-        className="bg-blue-500 text-white px-4 py-2 rounded-md w-40 ml-3"
+        className="bg-blue-500 text-white px-4 py-2 rounded-md w-40 ml-3 "
         onClick={() => console.log()}
       >
         Tulosta Lista
@@ -52,7 +55,7 @@ export default function AddJobToList() {
       {/* Modal */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center"
+          className="fixed inset-0 z-10 bg-gray-600 bg-opacity-50 flex justify-center items-center "
           onClick={closeModal}
         >
           <div
