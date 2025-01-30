@@ -10,25 +10,38 @@ import { useLocation } from "react-router-dom";
 export default function Home() {
   const [data, setData] = useState([{}]);
   const [added, setAdded] = useState(false);
+  const [user, setUser] = useState(null);
 
   const setAddedHandler = () => {
     setAdded((prevAdded) => !prevAdded);
   };
 
-  const navigate = useNavigate(); // Käytetään useNavigate
+  const navigate = useNavigate();
+
+  // siis onAuthState change tunnistaa jos on käytetty google autentikointia ja sen avulla voidaaan pitää "sessio" käynnissä ?
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+        navigate("/"); // Navigate to home page if no user
+      }
+    });
+    //  Kun auth.onAuthStateChanged on ajettu ja se on saanut tarvittavat tiedot (kuten user-objektin, jos käyttäjä on kirjautunut sisään), se ei enää tarvitse kuunnella käyttäjän autentikaatiotilaa ja se voidaan tryhjentää että se ei vie muistia
+    return () => unsubscribe();
+  }, [navigate]);
 
   useEffect(() => {
     const getData = async () => {
-      console.log("toimii", auth.currentUser.uid);
-      const user = auth.currentUser;
-      if (user) {
-        const data = await getUserJobData();
-        console.log(data, "TOIMIIIKo");
-        setData(data);
-      }
+      if (!user) return;
+      console.log("toimii");
+      const data = await getUserJobData();
+      console.log(data, "TOIMIIIKo");
+      setData(data);
     };
     getData();
-  }, [added]);
+  }, [user]);
 
   return (
     <div className="bg-slate-700 min-h-screen p-4">
