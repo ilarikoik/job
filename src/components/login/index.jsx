@@ -1,3 +1,4 @@
+import { addUser } from "../../firebase/database";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; //
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -54,6 +55,8 @@ export default function Login() {
   useEffect(() => {
     if (user) {
       navigate("/home"); // Ohjaa käyttäjä home-sivulle
+      console.log(user);
+      addUser(user);
     }
   }, [user, navigate]); // Kun user muuttuu, navigoi
   return (

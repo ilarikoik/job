@@ -1,6 +1,7 @@
 // firebase/firebase.js
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"; // Muokattu tuonti
+import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,5 +17,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
-export { auth, GoogleAuthProvider, signInWithPopup }; // Muokattu export
+export { auth, GoogleAuthProvider, signInWithPopup, db }; // Muokattu export

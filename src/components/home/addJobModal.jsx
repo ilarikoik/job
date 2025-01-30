@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { addUsersJobApplication } from "../../firebase/database";
 
 export default function AddJobToList() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +27,7 @@ export default function AddJobToList() {
   const handleAdd = () => {
     // lisää database mihi tungetaa tää objekti
     setTestilista((prevLista) => [...prevLista, hakemus]);
+    addUsersJobApplication(hakemus);
     closeModal();
   };
 
@@ -43,7 +45,7 @@ export default function AddJobToList() {
       </button>
       <button
         className="bg-blue-500 text-white px-4 py-2 rounded-md w-40 ml-3"
-        onClick={() => console.log(testilista)}
+        onClick={() => console.log()}
       >
         Tulosta Lista
       </button>

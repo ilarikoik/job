@@ -10,7 +10,9 @@ export default function NavBar() {
         <li className="text-slate-700 font-semibold text-lg">ghj</li>
         <li className="text-slate-700 font-semibold text-lg">
           <Link to="/">
-            <button onClick={handleGoogleSignOut}>Kirajudu UIlod</button>
+            <button onClick={handleGoogleSignOut} className="text-red-500">
+              Kirajudu UIlod
+            </button>
           </Link>
         </li>
       </ul>
