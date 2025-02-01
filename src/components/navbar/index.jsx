@@ -11,7 +11,7 @@ export default function NavBar() {
         <li className="text-slate-700 font-semibold text-lg">
           <Link to="/">
             <button onClick={handleGoogleSignOut} className="text-red-500">
-              Kirajudu UIlod
+              Kirjaudu ulos
             </button>
           </Link>
         </li>

@@ -1,5 +1,7 @@
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase";
+
+
 export const handleGoogleSignOut = async () => {
   try {
     await signOut(auth); // Sign out the user

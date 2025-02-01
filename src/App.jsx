@@ -11,12 +11,7 @@ import { auth } from "./firebase/firebase";
 import { useEffect } from "react";
 
 function App() {
-  // useEffect(() => {
-  //   const user = auth.currentUser;
-  //   if (!user || user === null) {
-  //     Navigate("/");
-  //   }
-  // });
+ 
   return (
     <div>
       <Router>

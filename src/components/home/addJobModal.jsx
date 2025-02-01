@@ -44,14 +44,14 @@ export default function AddJobToList({ added, setAddedHandler }) {
         className="bg-blue-500 text-white px-4 py-2 rounded-md w-40"
         onClick={openModal}
       >
-        Add Job
+        Lisää hakemus
       </button>
-      <button
+      {/* <button
         className="bg-blue-500 text-white px-4 py-2 rounded-md w-40 ml-3 "
         onClick={() => console.log()}
       >
         Tulosta Lista
-      </button>
+      </button> */}
       {/* Modal */}
       {isOpen && (
         <div
