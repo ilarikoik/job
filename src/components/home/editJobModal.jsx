@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { addUsersJobApplication } from "../../firebase/database";
 
-export default function AddJobToList({ added, setAddedHandler, setModalClose, job}) {
+export default function EditJobToList({setModalClose,job}) {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -27,6 +27,7 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
 
   useEffect(() => {
     if (job) {
+        console.log("LÖYTY JOB")
       setJobTitle(job.jobTitle || "");
       setCompany(job.company || "");
       setDateApplied(job.dateApplied || "");
@@ -34,6 +35,7 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
       setImportance(job.importance || "");
       setJobLink(job.jobLink || "");
     }
+    console.log("EI JOB")
   }, [job]);
 
   const handleAdd = () => {
@@ -55,13 +57,7 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
     setModalClose(); 
   };
 
-  // const handleAdd = () => {
-  //   setTestilista((prevLista) => [hakemus, ...prevLista]);
-  //   addUsersJobApplication(hakemus);
-  //   closeModal();
-  //   setAddedHandler();
-  //   console.log(added);
-  // };
+
 
   useEffect(() => {
     console.log(testilista + "listaaa");
@@ -69,20 +65,6 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
 
   return (
     <div className="flex mt-10 justify-center">
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded-md w-40"
-        onClick={openModal}
-      >
-        Lisää hakemus
-      </button>
-      {/* <button
-        className="bg-blue-500 text-white px-4 py-2 rounded-md w-40 ml-3 "
-        onClick={() => console.log()}
-      >
-        Tulosta Lista
-      </button> */}
-      {/* Modal */}
-      {isOpen && (
         <div
           className="fixed inset-0 z-10 bg-gray-600 bg-opacity-50 flex justify-center items-center "
           onClick={closeModal}
@@ -91,7 +73,7 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
             className="bg-white p-6 rounded-lg w-96"
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
           >
-            <h2 className="text-xl mb-4">Add a New Job</h2>
+            <h2 className="text-xl mb-4">Muokkaa hakemusta</h2>
             <form>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">
@@ -99,6 +81,7 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
                 </label>
                 <input
                   type="text"
+                  value={jobTitle}
                   className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md"
                   placeholder="Enter job title"
                   onChange={(e) => setJobTitle(e.target.value)}
@@ -108,6 +91,7 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
                 </label>
                 <input
                   type="text"
+                  value={company}
                   className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md"
                   placeholder="Enter company"
                   onChange={(e) => setCompany(e.target.value)}
@@ -117,6 +101,7 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
                 </label>
                 <input
                   type="text"
+                  value={dateApplied}
                   className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md"
                   placeholder="Päivämäärä tai jotai"
                   onChange={(e) => setDateApplied(e.target.value)}
@@ -126,6 +111,7 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
                 </label>
                 <input
                   type="text"
+                  value={location}
                   className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md"
                   placeholder="Etänä/Helsnki/Espoo..."
                   onChange={(e) => setLocation(e.target.value)}
@@ -135,6 +121,7 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
                 </label>
                 <input
                   type="text"
+                  value={importance}
                   className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md"
                   placeholder="Kuinka tärkeä paikka on"
                   onChange={(e) => setImportance(e.target.value)}
@@ -144,6 +131,7 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
                 </label>
                 <input
                   type="text"
+                value={jobLink}
                   className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md"
                   placeholder="duunitori.fi/......"
                   onChange={(e) => setJobLink(e.target.value)}
@@ -153,7 +141,7 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
                 <button
                   type="button"
                   className="bg-red-500 text-white px-4 py-2 rounded-md mr-2"
-                  onClick={closeModal}
+                  onClick={setModalClose}
                 >
                   Peruuta
                 </button>
@@ -162,13 +150,12 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
                   type="submit"
                   className="bg-blue-500 text-white px-4 py-2 rounded-md"
                 >
-                  Lisää hakemus
+                  Muokkaa hakemusta
                 </button>
               </div>
             </form>
           </div>
         </div>
-      )}
     </div>
   );
 }
