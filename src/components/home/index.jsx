@@ -67,11 +67,11 @@ export default function Home() {
       {<NavBar></NavBar>}
 
       
-      <div className="h-fit w-full flex flex-col text-white mt-5 flex justify-center items-center">
+      <div className="h-fit w-full flex flex-col text-white mt-5 flex justify-center items-center ">
         <p>Tallenna linkki, hae myöhemmin </p>
         <form onSubmit={handleSubmit}>
         <input 
-        className="bg-neutal-300 w-96 h-10 border-none text-black hover:shadow-lg hover:shadow-black"
+        className="bg-neutal-300 w-[700px] border-none text-black hover:shadow-lg hover:shadow-black rounded-lg border-none p-3 mr-1"
         type="text"
         placeholder="Työilmoituksen linkki"
         onChange={(e) => setApply(e.target.value)}
