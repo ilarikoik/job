@@ -67,8 +67,8 @@ export default function Home() {
       {<NavBar></NavBar>}
 
       
-      <div className="h-fit w-full flex flex-col text-white mt-5">
-        <p>Hae myöhemmin, tallenna linkki </p>
+      <div className="h-fit w-full flex flex-col text-white mt-5 flex justify-center items-center">
+        <p>Tallenna linkki, hae myöhemmin </p>
         <form onSubmit={handleSubmit}>
         <input 
         className="bg-neutal-300 w-96 h-10 border-none text-black hover:shadow-lg hover:shadow-black"
