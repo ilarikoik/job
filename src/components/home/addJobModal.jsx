@@ -49,7 +49,6 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
     if (job) {
       updateJobApplication(job.id, hakemus); // updateJobApplication on funktio joka päivittää tietokannan
     } else {
-      // Jos job ei ole olemassa, lisätään uusi
       addUsersJobApplication(hakemus);
     }
     setModalClose(); 

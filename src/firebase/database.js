@@ -1,4 +1,4 @@
-import { collection, addDoc, setDoc, doc, getDocs } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc, getDocs, updateDoc } from "firebase/firestore";
 import { auth, db } from "./firebase";
 
 export const addUser = async (user) => {
@@ -35,16 +35,38 @@ export const getUserJobData = async () => {
   const user = auth.currentUser;
   if (!user) return;
   try {
+
     const querySnapshot = await getDocs(
       collection(db, "users", user.uid, "jobs")
     );
     const jobData = querySnapshot.docs.map((doc) => ({
-      //   id: doc.id, // Adding document ID for reference (optional)
+        id: doc.id, // Adding document ID for reference (optional)
       ...doc.data(), // Spread the document data into the object
     }));
 
     return jobData;
   } catch (error) {
     console.log("error fething data..", error);
+  }
+};
+
+
+export const updateJobApplication = async (jobId, updatedData) => {
+  
+  console.log(updatedData)
+  try { 
+    const user = auth.currentUser.uid;
+  
+    if (!user) {
+      console.error("Käyttäjä ei ole kirjautunut sisään!");
+      return;
+    }
+
+
+    const jobRef = doc(db, "users", user, "jobs", jobId);
+    await updateDoc(jobRef, updatedData);
+    console.log("Työhakemus päivitetty Firebaseen!");
+  } catch (error) {
+    console.error("Päivitys epäonnistui:", error);
   }
 };

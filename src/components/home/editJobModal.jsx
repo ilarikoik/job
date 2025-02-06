@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { addUsersJobApplication } from "../../firebase/database";
+import { addUsersJobApplication,updateJobApplication } from "../../firebase/database";
 
 export default function EditJobToList({setModalClose,job}) {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +27,7 @@ export default function EditJobToList({setModalClose,job}) {
 
   useEffect(() => {
     if (job) {
-        console.log("LÖYTY JOB")
+        console.log("LÖYTY JOB" + JSON.stringify(job))
       setJobTitle(job.jobTitle || "");
       setCompany(job.company || "");
       setDateApplied(job.dateApplied || "");
@@ -35,7 +35,6 @@ export default function EditJobToList({setModalClose,job}) {
       setImportance(job.importance || "");
       setJobLink(job.jobLink || "");
     }
-    console.log("EI JOB")
   }, [job]);
 
   const handleAdd = () => {
