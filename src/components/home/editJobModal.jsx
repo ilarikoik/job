@@ -14,7 +14,6 @@ export default function EditJobToList({setModalClose,job}) {
   const [importance, setImportance] = useState("");
   const [jobLink, setJobLink] = useState("");
 
-  const [testilista, setTestilista] = useState([]);
 
   const hakemus = {
     jobTitle,
@@ -27,7 +26,6 @@ export default function EditJobToList({setModalClose,job}) {
 
   useEffect(() => {
     if (job) {
-        console.log("LÖYTY JOB" + JSON.stringify(job))
       setJobTitle(job.jobTitle || "");
       setCompany(job.company || "");
       setDateApplied(job.dateApplied || "");
@@ -58,9 +56,7 @@ export default function EditJobToList({setModalClose,job}) {
 
 
 
-  useEffect(() => {
-    console.log(testilista + "listaaa");
-  }, [testilista]);
+
 
   return (
     <div className="flex mt-10 justify-center">

@@ -3,6 +3,7 @@ import {
   AllCommunityModule,
   ModuleRegistry,
   ClientSideRowModelModule,
+  
 } from "ag-grid-community";
 import React, { useEffect, useState } from "react";
 import { colorSchemeDark } from "ag-grid-community";
@@ -28,12 +29,20 @@ export default function DataGrid({ data }) {
     setSelectedJob(null);
   };
 
+  // const gridOptions = {
+  //   enableRangeSelection: true,
+  //   copyHeadersToClipboard: true, 
+  //   enableCellTextSelection: true, 
+  // };
+  
+  
+
   const [colDefs, setColDefs] = useState([
-    { field: "jobTitle" },
-    { field: "company" },
-    { field: "location" },
-    { field: "dateApplied" },
-    { field: "importance" },
+    { field: "jobTitle", filter:true},
+    { field: "company", filter:true },
+    { field: "location" , filter:true},
+    { field: "dateApplied",filter:true },
+    { field: "importance" ,filter:true},
     { field: "jobLink" },
     {
       field: "Edit",
@@ -55,7 +64,7 @@ export default function DataGrid({ data }) {
       {/* <button onClick={() => console.log(rowData)}>ssssssssssssss</button> */}
       {isModalOpen && <EditJobToList job={selectedJob} setModalClose={closeModal}></EditJobToList>}
       <div className="ag-theme-alpine h-[800px] w-full">
-        <AgGridReact rowData={data} columnDefs={colDefs}></AgGridReact>
+        <AgGridReact rowData={data} columnDefs={colDefs} ></AgGridReact>
       </div>
     </div>
   );
