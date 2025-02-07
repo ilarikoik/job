@@ -67,83 +67,88 @@ export default function Login() {
         </Link> */}
       </div>
       <div className="bg-neutral-300 min-h-screen flex justify-center items-center">
-        <div className="bg-neutral-100 p-8 rounded-md w-96 h-96 flex justify-center items-center flex-col shadow-2xl shadow-neutral-500">
-          <h1 className="text-4xl text-slate-700 font-bold mb-4">
-            Kirjaudu sisään
-          </h1>
-          {error && <div className="text-red-500 mb-4">{error}</div>}
-          {/* Virheilmoitus */}
-          {/* <form onSubmit={handleSignUp}>
+        <div className="bg-neutral-100 p-8 rounded-md max-w-[1000px] flex justify-center items-center flex-col md:flex-row shadow-2xl shadow-neutral-500 ">
+          <div className="h-fit w-3/5 bg-slate-700 font-semibold text-white p-2 rounded-md mr-3 flex flex-col items-center">
+            <img src="src/assets/job2.png" alt="" />
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="text-4xl text-slate-700 font-bold mb-4">
+              Kirjaudu sisään
+            </h1>
+            {error && <div className="text-red-500 mb-4">{error}</div>}
+            {/* Virheilmoitus */}
+            {/* <form onSubmit={handleSignUp}>
             <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Sähköposti
-              </label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full mt-1 p-2 border rounded-md"
-                placeholder="Sähköposti"
-                required
-              />
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Salasana
-              </label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full mt-1 p-2 border rounded-md"
-                placeholder="Salasana"
-                required
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <button
-                className={`w-full bg-blue-500 text-white p-2 rounded-md m-2 ${
-                  isSigningIn ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-              >
-                Kirjaudu
-              </button>
-              <button
-                type="submit"
-                disabled={isSigningIn}
-                className={`w-full bg-blue-500 text-white p-2 rounded-md m-2 ${
-                  isSigningIn ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-              >
-                {isSigningIn ? "Rekisteröidään..." : "Rekisteröidy"}
-              </button>
-            </div>
-          </form> */}
-          <button
-            onClick={handleGoogleSignIn}
-            type="submit"
-            disabled={isSigningIn}
-            className={`w-full bg-white text-blue-500 border-2 border-blue-500 p-2 rounded-md m-2 flex flex-row justify-center${
-              isSigningIn ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-          >
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwexF4dGPnxZJZWRegir6y-_UDmyUn4oQ7iA&s"
-              alt=""
-              style={{ width: 30, height: 25 }}
+            <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700"
+            >
+            Sähköposti
+            </label>
+            <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full mt-1 p-2 border rounded-md"
+            placeholder="Sähköposti"
+            required
             />
-            <p>Tunnistaudu Googlella</p>
-          </button>
+            </div>
+            
+            <div className="mb-4">
+            <label
+            htmlFor="password"
+            className="block text-sm font-medium text-gray-700"
+            >
+            Salasana
+            </label>
+            <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full mt-1 p-2 border rounded-md"
+            placeholder="Salasana"
+            required
+            />
+            </div>
+            
+            <div className="flex flex-col">
+            <button
+            className={`w-full bg-blue-500 text-white p-2 rounded-md m-2 ${
+              isSigningIn ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              >
+              Kirjaudu
+              </button>
+              <button
+              type="submit"
+              disabled={isSigningIn}
+              className={`w-full bg-blue-500 text-white p-2 rounded-md m-2 ${
+                isSigningIn ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+                >
+                {isSigningIn ? "Rekisteröidään..." : "Rekisteröidy"}
+                </button>
+                </div>
+                </form> */}
+            <button
+              onClick={handleGoogleSignIn}
+              type="submit"
+              disabled={isSigningIn}
+              className={`w-full bg-white text-blue-500 border-2 border-blue-500 p-2 rounded-md m-2 flex flex-row justify-center${
+                isSigningIn ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwexF4dGPnxZJZWRegir6y-_UDmyUn4oQ7iA&s"
+                alt=""
+                style={{ width: 30, height: 25 }}
+              />
+              <p>Tunnistaudu Googlella</p>
+            </button>
+          </div>
         </div>
       </div>
     </>
