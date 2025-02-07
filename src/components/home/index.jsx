@@ -19,6 +19,7 @@ export default function Home() {
   const [apply, setApply] = useState();
   const [applyList, setApplyList] = useState([]);
   const [showApply, setShowApply] = useState(false);
+  const [refresh, setRefres] = useState(false);
 
   const setAddedHandler = () => {
     setAdded((prevAdded) => !prevAdded);
@@ -49,7 +50,7 @@ export default function Home() {
       setApplyList(applyData);
     };
     getData();
-  }, [user]);
+  }, [user, refresh, added]);
 
   const addApply = async (link) => {
     const linkki = { link };
@@ -63,7 +64,12 @@ export default function Home() {
     if (apply.trim()) {
       addApply(apply);
       setApply("");
+      ref();
     }
+  };
+
+  const ref = () => {
+    setRefres((prevR) => !prevR);
   };
   return (
     <div className="bg-slate-700 min-h-screen p-5">
@@ -105,7 +111,10 @@ export default function Home() {
                 {item.link}{" "}
               </a>
               <button
-                onClick={() => deleteUserApply(item.id)}
+                onClick={() => {
+                  deleteUserApply(item.id);
+                  ref();
+                }}
                 className="text-red-500"
               >
                 Poista

@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 
 import { addUsersJobApplication } from "../../firebase/database";
 
-export default function AddJobToList({ added, setAddedHandler, setModalClose, job}) {
+export default function AddJobToList({
+  added,
+  setAddedHandler,
+  setModalClose,
+  job,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -51,7 +56,8 @@ export default function AddJobToList({ added, setAddedHandler, setModalClose, jo
     } else {
       addUsersJobApplication(hakemus);
     }
-    setModalClose(); 
+    setModalClose();
+    setAddedHandler();
   };
 
   // const handleAdd = () => {
