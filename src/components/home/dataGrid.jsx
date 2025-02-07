@@ -3,7 +3,6 @@ import {
   AllCommunityModule,
   ModuleRegistry,
   ClientSideRowModelModule,
-  
 } from "ag-grid-community";
 import React, { useEffect, useState } from "react";
 import { colorSchemeDark } from "ag-grid-community";
@@ -20,7 +19,7 @@ export default function DataGrid({ data }) {
 
   const showModal = (job) => {
     setSelectedJob(job);
-    console.log(JSON.stringify(job) + "jjjjjj")
+    console.log(JSON.stringify(job) + "jjjjjj");
     setIsModalOpen(true);
   };
 
@@ -31,18 +30,16 @@ export default function DataGrid({ data }) {
 
   // const gridOptions = {
   //   enableRangeSelection: true,
-  //   copyHeadersToClipboard: true, 
-  //   enableCellTextSelection: true, 
+  //   copyHeadersToClipboard: true,
+  //   enableCellTextSelection: true,
   // };
-  
-  
 
   const [colDefs, setColDefs] = useState([
-    { field: "jobTitle", filter:true},
-    { field: "company", filter:true },
-    { field: "location" , filter:true},
-    { field: "dateApplied",filter:true },
-    { field: "importance" ,filter:true},
+    { field: "jobTitle", filter: true },
+    { field: "company", filter: true },
+    { field: "location", filter: true },
+    { field: "dateApplied", filter: true },
+    { field: "importance", filter: true },
     { field: "jobLink" },
     {
       field: "Edit",
@@ -57,14 +54,17 @@ export default function DataGrid({ data }) {
     },
   ]);
 
- 
-
   return (
     <div className="flex justify-center items-center mt-7">
       {/* <button onClick={() => console.log(rowData)}>ssssssssssssss</button> */}
-      {isModalOpen && <EditJobToList job={selectedJob} setModalClose={closeModal}></EditJobToList>}
-      <div className="ag-theme-alpine h-[800px] w-full">
-        <AgGridReact rowData={data} columnDefs={colDefs} ></AgGridReact>
+      {isModalOpen && (
+        <EditJobToList
+          job={selectedJob}
+          setModalClose={closeModal}
+        ></EditJobToList>
+      )}
+      <div className="ag-theme-alpine h-[500px] w-full">
+        <AgGridReact rowData={data} columnDefs={colDefs}></AgGridReact>
       </div>
     </div>
   );
