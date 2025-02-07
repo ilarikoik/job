@@ -62,14 +62,16 @@ export default function Login() {
   return (
     <>
       <div>
-        <Link to="/home">
+        {/* <Link to="/home">
           <button>ETUSIVULLE</button>
-        </Link>
+        </Link> */}
       </div>
-      <div className="bg-green-500 min-h-screen flex justify-center items-center">
-        <div className="bg-neutral-100 p-8 rounded-md shadow-lg w-96">
-          <h1 className="text-4xl text-blue-500 font-bold mb-4">Tunnistaudu</h1>
-          {error && <div className="text-red-500 mb-4">{error}</div>}{" "}
+      <div className="bg-neutral-300 min-h-screen flex justify-center items-center">
+        <div className="bg-neutral-100 p-8 rounded-md w-96 h-96 flex justify-center items-center flex-col shadow-2xl shadow-neutral-500">
+          <h1 className="text-4xl text-slate-700 font-bold mb-4">
+            Kirjaudu sisään
+          </h1>
+          {error && <div className="text-red-500 mb-4">{error}</div>}
           {/* Virheilmoitus */}
           {/* <form onSubmit={handleSignUp}>
             <div className="mb-4">
@@ -131,11 +133,16 @@ export default function Login() {
             onClick={handleGoogleSignIn}
             type="submit"
             disabled={isSigningIn}
-            className={`w-full bg-blue-500 text-white p-2 rounded-md m-2 ${
+            className={`w-full bg-white text-blue-500 border-2 border-blue-500 p-2 rounded-md m-2 flex flex-row justify-center${
               isSigningIn ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            Tunnistaudu Googlella
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwexF4dGPnxZJZWRegir6y-_UDmyUn4oQ7iA&s"
+              alt=""
+              style={{ width: 30, height: 25 }}
+            />
+            <p>Tunnistaudu Googlella</p>
           </button>
         </div>
       </div>
