@@ -52,11 +52,12 @@ export default function AddJobToList({
     };
 
     if (job) {
-      updateJobApplication(job.id, hakemus); // updateJobApplication on funktio joka päivittää tietokannan
+      updateJobApplication(job.id, hakemus);
     } else {
       addUsersJobApplication(hakemus);
+      console.log("täällä");
     }
-    setModalClose();
+    closeModal();
     setAddedHandler();
   };
 

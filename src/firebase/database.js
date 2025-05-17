@@ -1,4 +1,12 @@
-import { collection, addDoc, setDoc, doc, getDocs, updateDoc,deleteDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  setDoc,
+  doc,
+  getDocs,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { auth, db } from "./firebase";
 
 export const addUser = async (user) => {
@@ -35,12 +43,11 @@ export const getUserJobData = async () => {
   const user = auth.currentUser;
   if (!user) return;
   try {
-
     const querySnapshot = await getDocs(
       collection(db, "users", user.uid, "jobs")
     );
     const jobData = querySnapshot.docs.map((doc) => ({
-        id: doc.id, // Adding document ID for reference (optional)
+      id: doc.id, // Adding document ID for reference (optional)
       ...doc.data(), // Spread the document data into the object
     }));
 
@@ -61,18 +68,15 @@ export const addUsersApply = async (linkki) => {
   }
 };
 
-
-
 export const getUserApply = async () => {
   const user = auth.currentUser;
   if (!user) return;
   try {
-
     const querySnapshot = await getDocs(
       collection(db, "users", user.uid, "apply")
     );
     const applyData = querySnapshot.docs.map((doc) => ({
-        id: doc.id, // Adding document ID for reference (optional)
+      id: doc.id, // Adding document ID for reference (optional)
       ...doc.data(), // Spread the document data into the object
     }));
 
@@ -82,27 +86,24 @@ export const getUserApply = async () => {
   }
 };
 
-
-
 export const deleteUserApply = async (linkId) => {
-  console.log(linkId + "häääää")
+  console.log(linkId + "häääää");
   const user = auth.currentUser;
   if (!user) return;
   try {
-    const docRef = doc(db,"users", user.uid, "apply",linkId)
-    await deleteDoc(docRef)
-    console.log("Poistettu")
+    const docRef = doc(db, "users", user.uid, "apply", linkId);
+    await deleteDoc(docRef);
+    console.log("Poistettu");
   } catch (error) {
     console.log("error deleting link..", error);
   }
 };
 
 export const updateJobApplication = async (jobId, updatedData) => {
-  
   // console.log(updatedData)
-  try { 
+  try {
     const user = auth.currentUser.uid;
-  
+
     if (!user) {
       console.error("Käyttäjä ei ole kirjautunut sisään!");
       return;

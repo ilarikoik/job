@@ -11,7 +11,6 @@ import { auth } from "./firebase/firebase";
 import { useEffect } from "react";
 
 function App() {
- 
   return (
     <div>
       <Router>
