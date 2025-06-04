@@ -73,6 +73,19 @@ export default function AddJobToList({
     console.log(testilista + "listaaa");
   }, [testilista]);
 
+  const date = () => {
+    let d = new Date();
+    let year = d.getFullYear();
+    let month = d.getMonth() + 1;
+    if (month < 10) {
+      // console.log("oko", typeof month.toString());
+      month = "0" + month.toString();
+    }
+    let day = d.getDate();
+    console.log(`${day}.${month}.${year}`);
+    return `${day}.${month}.${year}`;
+  };
+
   return (
     <div className="flex mt-10 justify-center">
       <button
@@ -121,12 +134,21 @@ export default function AddJobToList({
                 <label className="block text-sm font-medium text-gray-700">
                   Millon haettu
                 </label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md"
-                  placeholder="Päivämäärä tai jotai"
-                  onChange={(e) => setDateApplied(e.target.value)}
-                />
+                <div className=" flex flex-row justify-center items-center">
+                  <input
+                    type="text"
+                    className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md"
+                    placeholder="Päivämäärä tai jotai"
+                    onChange={(e) => setDateApplied(e.target.value)}
+                    value={dateApplied}
+                  />
+                  <p
+                    className="w-fit px-4 py-2 mt-1 border border-gray-300 rounded-md"
+                    onClick={() => setDateApplied(date())}
+                  >
+                    Nyt
+                  </p>
+                </div>
                 <label className="block text-sm font-medium text-gray-700">
                   Sijainti
                 </label>
